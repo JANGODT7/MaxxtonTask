@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.padding_20px {
+  padding: 20px;
+}
+
+.margin_top_30px {
+  margin-top: 30px;
+}
+
+.margin_top_15px {
+  margin-top: 15px;
+}
+
+.customized_mat_dropdown {
+  background-color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pull_right {
+  float:right;
+}
+
+.container {
+  position: relative;
+}
+
+.child {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  /* Center vertically and horizontally */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
+}
+.position_relative{
+  position: relative;
+}
+
+.text_decoration_none{
+  text-decoration: none
+}
+
+.black_color{
+  color:black
+}
+
+.custom_button_color{
+  color: rgba(0,0,0,.54);
+}

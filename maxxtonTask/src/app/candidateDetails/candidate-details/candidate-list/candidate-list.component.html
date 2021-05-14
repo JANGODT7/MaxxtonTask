@@ -1,0 +1,101 @@
+<!-- <input   [(ngModel)]="searchTerm" (ngModelChange)="searchNames()" > -->
+
+
+
+<div class="margin_top_30px">
+  <div class="padding_20px">
+    <div class="pull_right" *ngIf="department">
+      <label for="">Total Employee In {{department}} Department :</label> {{canidateCountInDepartment}}
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+
+      <div class="padding_20px">
+        <mat-form-field class="example-form-field">
+          <mat-label> Search Employee By Name</mat-label>
+          <input matInput type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchNames()">
+          <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear"
+            (click)="searchTerm='';searchNames()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <span class="padding_20px"><button mat-raised-button (click)="sortNames()">Sort By Name</button></span>
+        <span class="padding_20px"><button mat-raised-button (click)="removeAllDevelopers()">Remove Developers
+            Department</button> </span>
+        <span class="padding_20px"><button mat-raised-button (click)="experienceCalculator()">Employees Experience >
+            2 Years </button></span>
+        <span class="padding_20px ">
+          <mat-form-field appearance="fill" class="customized_mat_dropdown">
+            <mat-label>Select Department</mat-label>
+            <mat-select disableRipple (selectionChange)="getDepartmentEmployeeCount($event)" [(ngModel)]="department">
+              <mat-option value="{{item}}" *ngFor="let item of deparatmentList">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+      </div>
+
+      <div class="padding_20px" *ngIf="tableData.length > 0;else nothingToShow">
+        <table mat-table [dataSource]="tableData" class="mat-elevation-z8">
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="Sr No">
+            <th mat-header-cell *matHeaderCellDef> Sr No. </th>
+            <td mat-cell *matCellDef="let element ; let i = index"> {{i + 1}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Department Column -->
+          <ng-container matColumnDef="Department">
+            <th mat-header-cell *matHeaderCellDef> Department </th>
+            <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+          </ng-container>
+
+          <!-- Joining Column -->
+          <ng-container matColumnDef="Joining Date">
+            <th mat-header-cell *matHeaderCellDef> Joining Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.joining_date | date : 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <!-- View Details -->
+          <ng-container matColumnDef="View Details">
+            <th mat-header-cell *matHeaderCellDef>  View Details </th>
+            <td mat-cell *matCellDef="let element"> 
+              <a class="text_decoration_none black_color" href="" [routerLink]="['/candidate',element.id]">
+                <button mat-raised-button color="primary">View Details 
+                </button> 
+             </a>
+            </td>
+          </ng-container>
+ 
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+      <ng-template #nothingToShow> 
+        <div class="text-center">
+          No Record Found With Keyword <b>{{ searchTerm }} </b>
+        </div>
+      </ng-template>
+
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+</div>

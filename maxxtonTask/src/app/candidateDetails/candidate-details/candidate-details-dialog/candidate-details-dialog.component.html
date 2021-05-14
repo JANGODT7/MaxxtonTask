@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Candidate Details</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+  <div class="margin_top_15px">
+    <div class="row">
+      <h4 class="col-sm-5">Id: </h4>
+      <div class="col-sm-5"> {{data?.id}} </div>
+    </div>
+    <div class="row">
+      <h4 class="col-sm-5">Name: </h4>
+      <div class="col-sm-5"> {{data?.name}} </div>
+    </div>
+    <div class="row">
+      <h4 class="col-sm-5">Department: </h4>
+      <div class="col-sm-5"> {{data?.department}} </div>
+    </div>
+    <div class="row">
+      <h4 class="col-sm-5">Joining Date: </h4>
+      <div class="col-sm-5"> {{data?.joining_date | date:'dd/MM/yyyy'}} </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions align="end">
+ <a class="text_decoration_none black_color" href="" [routerLink]="['/candidateList']">
+    <button mat-raised-button color="primary" [mat-dialog-close]="true"  cdkFocusInitial  color="primary">Back To Employee List 
+</button> </a>
+</mat-dialog-actions>
+
